@@ -8,7 +8,14 @@
 </head>
 <body>
 
-    <form action="{{ route('iletisim-sonuc') }}" method="post">
+    @if($errors->any())
+    @foreach($errors->all() as $hatalar )
+
+    {{$hatalar}} <br>
+    @endforeach
+    @endif
+
+    <form action="{{ route('uyekayit') }}" method="post">
         @csrf
         <label for="">Ad-Soyad</label><br>
         <input type="text" name="adsoyad"><br>
@@ -19,8 +26,7 @@
         <label for="">E-mail</label><br>
         <input type="text" name="mail"><br>
 
-        <label for="">Mesaj</label><br>
-        <textarea name="metin" ></textarea>
+     
         <input type="submit" name="ilet" value="Gönder">
     </form>
 
